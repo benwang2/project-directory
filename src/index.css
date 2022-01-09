@@ -160,3 +160,39 @@ body {
 .directory.l2 {
     padding-left: 24px;
 }
+
+.file {
+    padding: 4px;
+    position: relative;
+}
+
+.file.editorSelected {
+    background-color: #37373D;
+}
+
+.file.navSelected {
+    background-color: #094771;
+    border-inline: solid #007FD4 1px;
+    margin: -1px;
+}
+
+.file.navSelected::before {
+	content: "";
+	border-inline: solid #007FD4 1px;
+	writing-mode: vertical-rl;
+	padding: 0;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin-top: -1px;
+}
+
+.file.editorSelected {
+
+}
+
+.file.l0 {padding-left: 24px;}
+.file.l1 {padding-left: 48px;}
+.file.l2 {padding-left: 72px;}

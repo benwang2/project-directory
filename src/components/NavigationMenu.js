@@ -27,15 +27,33 @@ class Directory extends React.Component {
         return (
             <div className={classList.join(" ")}>
                 <div class="directory tab">
-                    <img className="collapseButton" src={"/img/svg/" + (this.state.Collapsed ? "collapsed.svg" : "expanded.svg")} alt="collapse"/>
+                    <img className="collapseButton" src={"/img/svg/" + (this.state.Collapsed ? "collapsed.svg" : "expanded.svg")} alt=""/>
                     {this.props.name}
                 </div>
                 {this.state.Directories.map((name,i)=>{
-                    console.log(name.   split("/"));
                     return (<Directory name={name.split("/").pop()}/>)
                 })}
+                <File name="asdf" level="0"/>
             </div>
         )
+    }
+}
+
+class File extends React.Component {
+    constructor(props){
+        super(props)
+
+        this.state = {
+            Open: 0,    // 1: Selected from navmenu, 2: Selected from editor
+        }
+    }
+
+    render(){
+        const classList = ["file",["l0","l1","l2"][this.props.level],[null,"navSelected","editorSelected"][this.state.Open]]
+        return (<div className={classList.join(" ")}>
+            <img src={this.props.icon}/>
+            {this.props.name}
+        </div>)
     }
 }
 
