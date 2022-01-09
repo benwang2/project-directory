@@ -1,198 +1,242 @@
-@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap');
+@import "https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@100;200;300;400;500;600;700&display=swap";
 
-html, body {
-    margin: 0; padding: 0;
-    overflow-x: hidden;
-    /* overflow: hidden; */
+html,body {
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
 }
 
 body {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family:'IBM Plex Mono',monospace;
 }
 
 .window {
-    background-color: #19181A;
-    color: #c3c3c3;
-    width: 100vw;
-    height: 100vh;
-    display: flex;
+    background-color:#19181A;
+    color:#c3c3c3;
+    width:100vw;
+    height:100vh;
+    display:flex;
 }
 
 .activityBar {
-    background-color: #333333;
-    max-width: 58px; min-width: 58px;
-    height: 100vh;
-    float: left;
+    background-color:#333;
+    max-width:58px;
+    min-width:58px;
+    height:100vh;
+    float:left;
 }
 
 .sideBar {
-    background-color: #252526;
-    max-width: 364px; min-width: 364px;
-    height: 100vh;
-    float: left;
-    font-size:0.9rem
+    background-color:#252526;
+    max-width:364px;
+    min-width:364px;
+    height:100vh;
+    float:left;
+    font-size:.9rem;
 }
 
-.editorTab.highlighted {background-color: #3C3F42;}
-.editorTab.active {background-color: #1E1E1E;color: white}
-.editorTab.inactive {background-color: #2D2D2D;color:#969690}
+.editorTab.highlighted {
+    background-color:#3C3F42;
+}
+
+.editorTab.active {
+    background-color:#1E1E1E;
+    color:#fff;
+}
+
+.editorTab.inactive {
+    background-color:#2D2D2D;
+    color:#969690;
+}
 
 .editorTab {
-    padding: 12px 12px 12px  12px;
-    display: flex;
-    background-color: #1E1E1E;
-    color: #C3C3C3;
-    font-size: 1rem;
-    gap: 12px;
-    width: fit-content;
-    /* border-right: 1px #252526 solid; */
-    white-space: nowrap;
-    user-select: none;
-    -moz-user-select: none;
-    -webkit-user-select: none;
-    -ms-user-select: none;
+    padding:12px;
+    display:flex;
+    background-color:#1E1E1E;
+    color:#C3C3C3;
+    font-size:1rem;
+    gap:12px;
+    width:fit-content;
+    white-space:nowrap;
+    user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
 }
 
-.editorTab:hover{
-    cursor: pointer;
+.editorTab:hover {
+    cursor:pointer;
 }
 
 .editorPadding {
-    display: flex;
-    flex: 1;
+    display:flex;
+    flex:1;
 }
 
-.editorPadding.highlighted {background-color: #3C3F42;}
+.editorPadding.highlighted {
+    background-color:#3C3F42;
+}
 
 .breadcrumbs {
-    background-color: #1E1E1E;
-    height: 26px;
-    box-shadow: 2px 4px 4px #161616;
-    display: flex;
+    background-color:#1E1E1E;
+    height:26px;
+    box-shadow:2px 4px 4px #161616;
+    display:flex;
 }
 
 .fileViewer {
-    overflow-x: scroll;
-    display: flex;
-    flex: 1;
-    padding-left: 1rem;
+    overflow-x:scroll;
+    display:flex;
+    flex:1;
+    padding-left:1rem;
 }
 
 .column {
-    display: flex;
-    flex-direction: column;
-    width: 100%;    
+    display:flex;
+    flex-direction:column;
+    width:100%;
 }
 
 .padded-top {
-    padding-top: 1rem;
+    padding-top:1rem;
 }
 
 .padded-left-2x {
-    padding-left: 2rem;
+    padding-left:2rem;
 }
 
 .closeButton {
-    padding: 4px;
-    border-radius: 4px;
+    padding:4px;
+    border-radius:4px;
 }
 
 .closeButton:hover {
-    cursor: pointer;
-    background-color: rgba(255,255,255,0.1);
+    cursor:pointer;
+    background-color:rgba(255,255,255,0.1);
 }
 
 .collapseButton {
     padding-top:4px;
-    width: 16px;
+    width:16px;
 }
 
 .collapsed {
-    display: none;
+    display:none;
+}
+
+.directory,.file {
+    user-select:none;
+    -moz-user-select:none;
+    -webkit-user-select:none;
+    -ms-user-select:none;
 }
 
 .directory {
-    display: flex;
-    flex-direction: column;
-    color: #cccccc;
-    position: relative;
-    font-weight: 400;
-    margin-bottom: 1px;
-    flex: 1;
+    display:flex;
+    flex-direction:column;
+    color:#ccc;
+    position:relative;
+    font-weight:400;
+    margin-bottom:1px;
+    width:100%;
 }
 
 .directory.collapsed {
-    flex: 0;
+    flex:0;
 }
 
 .directory.tab {
-    padding: 4px;
-    flex-direction: row;
-    align-items: center;
-    max-height: 20px;
-    gap: 0.25rem
+    padding:4px 0;
+    flex-direction:row;
+    align-items:center;
+    max-height:20px;
+    gap:.25rem;
+    width:100%;
 }
 
 .directory.root > .tab {
-    font-weight: 700;
+    font-weight:700;
 }
 
-.directory.tab:hover{
-    cursor: pointer
+.directory.tab:hover {
+    cursor:pointer;
 }
 
-.directory.root::before{
-    top: 100%;
-    left: 0;
-    content: "";
-    position: absolute;
-    background-color: #393939;
-    border-bottom: 1px #2E2E2E;
-    height: 1px;
-    width: 100%;
-    padding: 0;
+.directory.root::after {
+    top:100%;
+    left:0;
+    content:"";
+    position:absolute;
+    background-color:#393939;
+    border-bottom:1px #2E2E2E;
+    height:1px;
+    width:100%;
+    padding:0;
 }
 
-.directory.l1 {
-    padding-left: 20px;
+.l1,.l2,.l3 .tab {
+    align-content:flex-start;
+    flex-wrap:wrap;
 }
 
-.directory.l2 {
-    padding-left: 24px;
+.directory.root .tab::before {
+    content:"";
+    width:4px;
+    height:100%;
+}
+
+.directory.l1 .tab::before {
+    content:"";
+    width:24px;
+    height:100%;
+}
+
+.directory.l2 .tab::before {
+    content:"";
+    width:48px;
+    height:100%;
+    width:72px;
+    height:100%;
 }
 
 .file {
-    padding: 4px;
-    position: relative;
+    padding:4px 0;
+    width:100%;
+    position:relative;
+    align-items:center;
+    display:flex;
+    gap:4px;
+}
+
+.file:hover {
+cursor:pointer;
+}
+
+.directory.tab:hover,.file:hover {
+    background-color:#2A2D2E;
 }
 
 .file.editorSelected {
-    background-color: #37373D;
+    background-color:#37373D;
 }
 
 .file.navSelected {
-    background-color: #094771;
-    border-inline: solid #007FD4 1px;
-    margin: -1px;
+    background-color:#094771;
+    border-inline:solid #007FD4 1px;
+    margin:-1px;
 }
 
-.file.navSelected::before {
-	content: "";
-	border-inline: solid #007FD4 1px;
-	writing-mode: vertical-rl;
-	padding: 0;
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	margin-top: -1px;
+.file.l0::before {
+    content:"";
+    width:24px;
 }
 
-.file.editorSelected {
-
+.file.l1::before {
+    content:"";
+    width:48px;
 }
 
-.file.l0 {padding-left: 24px;}
-.file.l1 {padding-left: 48px;}
-.file.l2 {padding-left: 72px;}
+.file.l2::before {
+    content:"";
+    width:72px;
+}

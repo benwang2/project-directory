@@ -83,7 +83,7 @@ class Content extends React.Component {
                         let status = this.state.ActiveEditor === name ? "active" : "inactive"
                         return (
                             <EditorTab
-                                icon="./img/svg/javascript.svg"
+                                icon="/img/svg/javascript.svg"
                                 setActiveEditor={this.setActiveEditor}
                                 closeEditor={this.closeEditor}
                                 reorderTabs={this.reorderTabs}
@@ -207,7 +207,7 @@ class EditorTab extends React.Component {
             <div draggable={isDraggable} className={className} value={this.props.src} position={this.props.position}
                 {...events}
                 >
-                {!isPadding && <img src={this.props.icon} alt="file extension"/>}
+                {!isPadding && <img src={process.env.PUBLIC_URL+this.props.icon} alt="file extension"/>}
                 {!isPadding && this.props.src}
                 {!isPadding && 
                     <CloseButton onClick={this.closeTab}
