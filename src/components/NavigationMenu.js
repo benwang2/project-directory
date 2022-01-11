@@ -4,7 +4,7 @@ import '../index.css'
 class ActivityBar extends React.Component {
     render(){
         return (
-            <div className="activityBar column">
+            <div className="activityBar column" style={{width:"5vw"}}>
                 {this.props.children}
             </div>
         )
@@ -30,7 +30,7 @@ class Directory extends React.Component {
     }
 
     render(){
-        const classList = ["directory",(this.state.Collapsed ? "collapsed":""),(this.props.isRoot?"root":"l1")]
+        const classList = ["directory",(this.state.Collapsed ? "collapsed":"expanded"),(this.props.isRoot?"root":"l1")]
         return (
             <div className={classList.join(" ")}>
                 <div class="directory tab" onClick={this.handleClick}>

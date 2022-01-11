@@ -21,7 +21,7 @@ body {
 .activityBar {
     background-color:#333;
     max-width:58px;
-    min-width:58px;
+    min-width:40px;
     height:100vh;
     float:left;
 }
@@ -124,6 +124,8 @@ body {
     display:none;
 }
 
+.expanded {}
+
 .directory,.file {
     user-select:none;
     -moz-user-select:none;
@@ -143,6 +145,15 @@ body {
 
 .directory.collapsed {
     flex:0;
+}
+
+.directory.root.expanded > .tab::after {
+    position: absolute;
+    bottom:-2px;
+    content:"";
+    width: 100%;
+    height: 1px;
+    background: black;
 }
 
 .directory.tab {
