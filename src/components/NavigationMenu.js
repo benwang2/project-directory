@@ -73,7 +73,7 @@ class SideBar extends React.Component {
 
     render(){
         return(
-            <div className={"sideBar column"+(this.state.Collapsed?" collapsed":"")}>
+            <div className={"sideBar column"+(this.state.Collapsed?" collapsed":"")}  style={{width:"20vw"}}>
                 <div style={{padding:"0.75rem 2rem 0.75rem 2rem"}}>
                     <span style={{fontWeight: "400"}}>
                         EXPLORER

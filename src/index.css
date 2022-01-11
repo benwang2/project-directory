@@ -28,11 +28,11 @@ body {
 
 .sideBar {
     background-color:#252526;
-    max-width:364px;
-    min-width:364px;
+    max-width:277px;
+    min-width:180px;
     height:100vh;
     float:left;
-    font-size:.9rem;
+    font-size:.8rem;
 }
 
 .editorTab.highlighted {
@@ -54,7 +54,7 @@ body {
     display:flex;
     background-color:#1E1E1E;
     color:#C3C3C3;
-    font-size:1rem;
+    font-size:.8rem;
     gap:12px;
     width:fit-content;
     white-space:nowrap;
