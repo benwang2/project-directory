@@ -29,7 +29,7 @@ class SideBar extends React.Component {
                     <span style={{fontWeight: "400"}}>
                         EXPLORER
                     </span>
-                    <img src={process.env.PUBLIC_URL+"/img/svg/ellipsis.svg"} style={{float:"right",top:"50%",position:"relative"}} alt="expand"/>
+                    {/* <img src={process.env.PUBLIC_URL+"/img/svg/ellipsis.svg"} style={{float:"right",top:"50%",position:"relative"}} alt="expand"/> */}
                 </div>
                 {this.props.children}
             </div>
