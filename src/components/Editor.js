@@ -3,10 +3,7 @@ import CloseButton from './CloseButton'
 
 const WebContent = {
     "about.js":        require("../pages/about"),
-    "skills.js":       require("../pages/skills"),
-    "experiences.js":   require("../pages/experiences"),
-    "projects.js":     require("../pages/projects"),
-    "contact.js":      require("../pages/contact")
+    "bugs.js":       require("../pages/bugs"),
 }
 
 class Content extends React.Component {
@@ -14,7 +11,7 @@ class Content extends React.Component {
         super(props)
 
         this.state = {
-            OpenEditors: ["about.js","skills.js","experiences.js","projects.js","contact.js","__PADDING__"],
+            OpenEditors: ["about.js","bugs.js","__PADDING__"],
             TempEditor: [null,0],
             ActiveEditor: "about.js"
         }
@@ -92,7 +89,7 @@ class Content extends React.Component {
                         )
                     })}
                 </EditorGroup>
-                <Breadcrumbs/>
+                {/* <Breadcrumbs/> */}
                 <FileViewer src={this.state.ActiveEditor}/>
             </div>
         )
