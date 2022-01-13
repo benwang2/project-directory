@@ -18,7 +18,7 @@ class Window extends React.Component {
         this.state = {
             "OpenEditors":["README.md","__PADDING__"],
             "TempEditor": [null,0],
-            "ActiveEditor": "README.md",
+            "ActiveEditor": null,
             "SelectedFile": "",
         }
 
@@ -41,6 +41,7 @@ class Window extends React.Component {
             }
         }
         load(Files);
+        // this.setActiveEditor("README.md",true)
     }
 
     closeEditor(src){
@@ -54,13 +55,14 @@ class Window extends React.Component {
         })
     }
 
-    setActiveEditor(src){
-        if (!this.state.OpenEditors.includes(src)){
+    setActiveEditor(src,tmp){
+        if (!tmp && !this.state.OpenEditors.includes(src)){
             if (this.state.TempEditor[0] === src && (Date.now()/1000)-this.state.TempEditor[1] < 1){
+                console.log(this.state.OpenEditors,[...this.state.OpenEditors.slice(-1),src,"__PADDING__"])
                 this.setState({
                     "TempEditor":[null,0],
                     "ActiveEditor":src,
-                    "OpenEditors":[...this.state.OpenEditors,src]
+                    "OpenEditors":[...this.state.OpenEditors.slice(0,-1),src,"__PADDING__"]
                 })
             } else {
                 this.setState({
@@ -71,7 +73,6 @@ class Window extends React.Component {
         } else {
             this.setState({"ActiveEditor":src})
         }
-        // document.getElementById("project_directory/"+src).classList.toggle("editorSelected",true)
     }
 
     reorderTabs(tab1, tab2){
