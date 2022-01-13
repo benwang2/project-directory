@@ -10,7 +10,7 @@ class Content extends React.Component {
             </ul>
             <h1>todo</h1>
             <ol>
-                <li>create icon for .md files, (different from README.md)</li>
+                <li><strike>create icon for .md files, (different from README.md)</strike></li>
                 <li>implement functionality for opening/closing files from side</li>
                 <li>make open editors directory display properly</li>
                 <li>close button should be diminished on non-selected editors</li>

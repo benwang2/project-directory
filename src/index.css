@@ -50,7 +50,7 @@ body {
 }
 
 .editorTab {
-    padding:12px;
+    padding:10px;
     display:flex;
     background-color:#1E1E1E;
     color:#C3C3C3;
@@ -123,8 +123,6 @@ body {
 .collapsed {
     display:none;
 }
-
-.expanded {}
 
 .directory,.file {
     user-select:none;
