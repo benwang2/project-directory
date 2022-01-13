@@ -77,16 +77,10 @@ body {
     background-color:#3C3F42;
 }
 
-.breadcrumbs {
-    background-color:#1E1E1E;
-    height:26px;
-    box-shadow:2px 4px 4px #161616;
-    display:flex;
-}
-
 .fileViewer {
     overflow-x:scroll;
     display:flex;
+    flex-direction: column;
     flex:1;
     padding-left:1rem;
 }
