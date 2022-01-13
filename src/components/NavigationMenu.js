@@ -43,7 +43,7 @@ class NavMenu extends React.Component {
             <div style={{display:"flex"}}>
                 <ActivityBar/>
                 <SideBar>
-                    <FileSystem/>
+                    <FileSystem files={this.props.files} setActiveEditor={this.props.setActiveEditor}/>
                 </SideBar>   
             </div>
         )

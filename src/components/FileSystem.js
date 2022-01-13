@@ -1,13 +1,5 @@
 import React from 'react'
 
-const Files = {
-    "src":{
-        "README.md":"https://raw.githubusercontent.com/benwang2/Lotus/master/README.md"
-    },
-    "lotus.md":"https://raw.githubusercontent.com/benwang2/Lotus/master/README.md",
-    "steganography.md":"https://raw.githubusercontent.com/benwang2/steganography/master/README.md"
-}
-
 class Directory extends React.Component {
     constructor(props){
         super(props)
@@ -23,7 +15,6 @@ class Directory extends React.Component {
 
     handleClick(e){
         this.setState({"Collapsed": !this.state.Collapsed});
-        this.props.setSelected(this);
     }
 
     render(){
@@ -35,17 +26,18 @@ class Directory extends React.Component {
         ]
 
         return (
-            <div className={classList.join(" ")}>
+            <div className={classList.join(" ")} id={"dir/"+this.props.name}>
                 <div class="directory tab" onClick={this.handleClick}>
                     <img className="collapseButton" src={process.env.PUBLIC_URL+"/img/svg/" + (this.state.Collapsed ? "collapsed.svg" : "expanded.svg")} alt=""/>
                     {this.props.name}
                 </div>
                 {(!this.state.Collapsed && this.props.directory) &&
-                    Object.keys(this.props.directory).map((path)=>{
-                        if (typeof(this.props.directory[path])==="string"){
-                            return <File name={path} icon="/img/svg/readme.svg" level={this.props.level}/>
+                    Object.keys(this.props.directory).map((name)=>{
+                        if (typeof(this.props.directory[name])==="string"){
+                            let icon = name == "README.md" ? "/img/svg/readme.svg" : "/img/svg/markdown.svg"
+                            return <File name={name} icon={icon} level={this.props.level} setActiveEditor={this.props.setActiveEditor}/>
                         } else {
-                            return <Directory name={path} directory={this.props.directory[path]} level={parseInt(this.props.level)+1}/>
+                            return <Directory name={name} directory={this.props.directory[name]} level={parseInt(this.props.level)+1} setActiveEditor={this.props.setActiveEditor}/>
                         }
                     })
                 }
@@ -61,16 +53,24 @@ class File extends React.Component {
         this.state = {
             Open: 0,    // 1: Selected from navmenu, 2: Selected from editor
         }
+
+        this.handleClick = this.handleClick.bind(this)
+    }
+
+    handleClick(e){
+        this.props.setActiveEditor(this.props.name)
     }
 
     render(){
         const classList = ["file","l"+(this.props.level||0),[null,"navSelected","editorSelected"][this.state.Open]]
-        return (<div className={classList.join(" ")}>
+        // const style = (this.props.name==="README.md"?{"padding":"2px"}:{})
+        return (<div className={classList.join(" ")} id={"file/"+this.props.name} onClick={this.handleClick} >
             <img src={process.env.PUBLIC_URL+this.props.icon}/>
             {this.props.name}
         </div>)
     }
 }
+
 class FileSystem extends React.Component {
     constructor(props){
         super(props);
@@ -79,11 +79,16 @@ class FileSystem extends React.Component {
             ActiveEditor: "README.md",
         }
     }
+
+    componentDidMount(){
+        this.forceUpdate()
+    }
+
     render(){
         return(
             <div>
-                <Directory name="OPEN EDITORS" isRoot="true" path="open_editors" level="0"/>
-                <Directory name="PROJECT-DIRECTORY" isRoot="true" directory={Files} level="0"/>
+                <Directory name="OPEN EDITORS" isRoot="true" path="open_editors" directory={this.props.openEditors} level="0" setActiveEditor={this.props.setActiveEditor}/>
+                <Directory name="PROJECT-DIRECTORY" isRoot="true" directory={this.props.files} level="0" setActiveEditor={this.props.setActiveEditor}/>
             </div>
         )
     }
