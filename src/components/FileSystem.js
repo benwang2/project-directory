@@ -63,8 +63,7 @@ class File extends React.Component {
 
     render(){
         const classList = ["file","l"+(this.props.level||0),[null,"navSelected","editorSelected"][this.state.Open]]
-        // const style = (this.props.name==="README.md"?{"padding":"2px"}:{})
-        return (<div className={classList.join(" ")} id={"file/"+this.props.name} onClick={this.handleClick} >
+        return (<div className={classList.join(" ")} id={"file/"+this.props.name} onClick={this.handleClick}>
             <img src={process.env.PUBLIC_URL+this.props.icon}/>
             {this.props.name}
         </div>)
