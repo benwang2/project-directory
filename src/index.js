@@ -41,7 +41,6 @@ class Window extends React.Component {
             }
         }
         load(Files);
-        // this.setActiveEditor("README.md",true)
     }
 
     closeEditor(src){
