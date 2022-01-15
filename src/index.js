@@ -44,18 +44,26 @@ class Window extends React.Component {
     }
 
     closeEditor(src){
-        let Index = this.state.OpenEditors.indexOf(src)
-
         let Editors = [...this.state.OpenEditors].filter(function(e) { return e !== src })
 
-        this.setState({
-            "OpenEditors":Editors,
-            "ActiveEditor":(src === this.state.ActiveEditor) ? Editors[Math.max(0,Index-1)] : this.state.ActiveEditor,
-        })
+        this.setState({"OpenEditors":Editors})
+
+        if (src === this.state.ActiveEditor)
+            this.setState({"ActiveEditor": Editors[Math.max(0,this.state.OpenEditors.indexOf(src))]})
+        
+        if (src === this.state.TempEditor[0])
+            this.setState({"TempEditor": [null, 0]}) 
     }
 
     setActiveEditor(src){
-        if (this.state.OpenEditors.includes(src) && (src !== this.state.TempEditor[0]))
+        if (this.state.TempEditor[0] === src && (Date.now()/1000)-this.state.TempEditor[1] < 1){
+            return this.setState({
+                "TempEditor":[null,0],
+                "ActiveEditor":src,
+            })
+        }
+
+        if (this.state.OpenEditors.includes(src))
             return this.setState({"ActiveEditor":src});
 
         if (this.state.TempEditor[0] == null){
@@ -63,13 +71,6 @@ class Window extends React.Component {
                 "TempEditor":[src,Date.now()/1000],
                 "ActiveEditor":src,
                 "OpenEditors":[...this.state.OpenEditors.slice(0,-1), src, "__PADDING__"] //  
-            })
-        }
-
-        if (this.state.TempEditor[0] === src && (Date.now()/1000)-this.state.TempEditor[1] < 1){
-            return this.setState({
-                "TempEditor":[null,0],
-                "ActiveEditor":src,
             })
         }
 
@@ -82,6 +83,7 @@ class Window extends React.Component {
                 "OpenEditors":newEditors
             })
         }
+
     }
 
     reorderTabs(tab1, tab2){
