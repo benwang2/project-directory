@@ -5,11 +5,6 @@ import remarkGfm from 'remark-gfm';
 import rehypeSanitize from 'rehype-sanitize'
 import rehypeRaw from 'rehype-raw'
 
-const WebContent = {
-    "about.js":        require("../pages/about"),
-    "bugs.js":       require("../pages/bugs"),
-}
-
 class Content extends React.Component {
     constructor(props){
         super(props)
