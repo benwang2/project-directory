@@ -143,11 +143,15 @@ class EditorTab extends React.Component {
         events["onDrop"] = this.handleDrop
         
         return (
-            <div draggable={isDraggable} className={className} value={this.props.src} position={this.props.position}
+            <div draggable={isDraggable}
+                className={className}
+                value={this.props.src}
+                position={this.props.position}
+                style={this.props.status[1] ? {fontStyle:"italic"} : {}}
                 {...events}
                 >
                 {!isPadding && <img src={process.env.PUBLIC_URL+this.props.icon} alt="file extension"/>}
-                {!isPadding && (<span style={this.props.status[1] ? {fontStyle:"italic"} : {}}>{this.props.src}</span>)}
+                {!isPadding && this.props.src}
                 
                 {!isPadding && 
                     <CloseButton onClick={this.closeTab}
