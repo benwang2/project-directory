@@ -25,13 +25,14 @@ class Content extends React.Component {
                 <EditorGroup>
                     {this.props.openEditors.map((name,i)=>{
                         let status = this.props.activeEditor === name ? "active" : "inactive"
+                        let isTemp = this.props.tempEditor === name
                         return (
                             <EditorTab
                                 icon="/img/svg/javascript.svg"
                                 setActiveEditor={this.setActiveEditor}
                                 closeEditor={this.closeEditor}
                                 reorderTabs={this.reorderTabs}
-                                status={status} key={i} src={name} position={i}
+                                status={[status,isTemp]} key={i} src={name} position={i}
                             />
                         )
                     })}
@@ -45,7 +46,7 @@ class Content extends React.Component {
 class EditorGroup extends React.Component {
     render(){
         return (
-            <div style={{display:"flex", minHeight:"maxContent", overflowX:"scroll", scrollbarWidth:"thin", gap:"1px"}}>
+            <div style={{display:"flex", minHeight:"maxContent", gap:"1px", backgroundColor:"#252526"}}>
                 {this.props.children}
             </div>
         )
@@ -131,7 +132,7 @@ class EditorTab extends React.Component {
 
     render(){
         let isPadding = this.props.src === "__PADDING__"
-        let className = !isPadding ? ("editorTab " + this.props.status) : "editorPadding"
+        let className = !isPadding ? ("editorTab " + this.props.status[0]) : "editorPadding"
         let isDraggable = !isPadding
         let events = {}
         if (!isPadding){
@@ -151,7 +152,8 @@ class EditorTab extends React.Component {
                 {...events}
                 >
                 {!isPadding && <img src={process.env.PUBLIC_URL+this.props.icon} alt="file extension"/>}
-                {!isPadding && this.props.src}
+                {!isPadding && (<span style={this.props.status[1] ? {fontStyle:"italic"} : {}}>{this.props.src}</span>)}
+                
                 {!isPadding && 
                     <CloseButton onClick={this.closeTab}
                                 status={(this.props.status==="active" || this.state.hovering) ? "active" : "inactive"}

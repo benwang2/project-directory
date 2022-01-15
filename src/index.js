@@ -16,7 +16,7 @@ class Window extends React.Component {
         super(props);
 
         this.state = {
-            "OpenEditors":["README.md","__PADDING__"],
+            "OpenEditors":["__PADDING__"],
             "TempEditor": [null,0],
             "ActiveEditor": null,
             "SelectedFile": "",
@@ -54,23 +54,33 @@ class Window extends React.Component {
         })
     }
 
-    setActiveEditor(src,tmp){
-        if (!tmp && !this.state.OpenEditors.includes(src)){
-            if (this.state.TempEditor[0] === src && (Date.now()/1000)-this.state.TempEditor[1] < 1){
-                console.log(this.state.OpenEditors,[...this.state.OpenEditors.slice(-1),src,"__PADDING__"])
-                this.setState({
-                    "TempEditor":[null,0],
-                    "ActiveEditor":src,
-                    "OpenEditors":[...this.state.OpenEditors.slice(0,-1),src,"__PADDING__"]
-                })
-            } else {
-                this.setState({
-                    "TempEditor":[src,Date.now()/1000],
-                    "ActiveEditor":src
-                })
-            }
-        } else {
-            this.setState({"ActiveEditor":src})
+    setActiveEditor(src){
+        if (this.state.OpenEditors.includes(src) && (src !== this.state.TempEditor[0]))
+            return this.setState({"ActiveEditor":src});
+
+        if (this.state.TempEditor[0] == null){
+            return this.setState({
+                "TempEditor":[src,Date.now()/1000],
+                "ActiveEditor":src,
+                "OpenEditors":[...this.state.OpenEditors.slice(0,-1), src, "__PADDING__"] //  
+            })
+        }
+
+        if (this.state.TempEditor[0] === src && (Date.now()/1000)-this.state.TempEditor[1] < 1){
+            return this.setState({
+                "TempEditor":[null,0],
+                "ActiveEditor":src,
+            })
+        }
+
+        if (this.state.TempEditor[0] !== src){
+            let newEditors = [...this.state.OpenEditors]
+            newEditors[newEditors.indexOf(this.state.TempEditor[0])] = src
+            return this.setState({
+                "TempEditor":[src,Date.now()/1000],
+                "ActiveEditor":src,
+                "OpenEditors":newEditors
+            })
         }
     }
 
@@ -104,6 +114,7 @@ class Window extends React.Component {
                             closeEditor={this.closeEditor}
                             reorderTabs={this.reorderTabs}
                             activeEditor={this.state.ActiveEditor}
+                            tempEditor={this.state.TempEditor[0]}
                             openEditors={this.state.OpenEditors}
                 />
             </div>
