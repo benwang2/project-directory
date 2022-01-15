@@ -8,7 +8,8 @@ import NavMenu from './components/NavigationMenu';
 const Files = {
     "README.md":"https://raw.githubusercontent.com/benwang2/project-directory/master/README.md",
     "lotus.md":"https://raw.githubusercontent.com/benwang2/Lotus/master/README.md",
-    "steganography.md":"https://raw.githubusercontent.com/benwang2/steganography/master/README.md"
+    "steganography.md":"https://raw.githubusercontent.com/benwang2/steganography/master/README.md",
+    "ProblemSetGenerator.md":"https://raw.githubusercontent.com/benwang2/ProblemSetGenerator/main/README.md"
 }
 
 class Window extends React.Component {
