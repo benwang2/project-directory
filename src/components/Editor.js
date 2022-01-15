@@ -14,70 +14,12 @@ class Content extends React.Component {
     constructor(props){
         super(props)
 
-        // this.state = {
-        //     OpenEditors: ["about.js","bugs.js","__PADDING__"],
-        //     TempEditor: [null,0],
-        //     ActiveEditor: "about.js"
-        // }
-
         this.setActiveEditor = this.props.setActiveEditor
         this.closeEditor = this.props.closeEditor
         this.reorderTabs = this.props.reorderTabs
     }
 
-    // editorTab(src){
-    //     if (this.state.OpenEditors.indexOf(src)) return this.setState({"ActiveEditor":src})
-    //     if (this.state.TempEditor[0] != null)
-    //         if ((Date.now() / 1000) - this.state.TempEditor[1] < 1){
-    //             this.state.OpenEditors.push(src)
-    //             this.setState({
-    //                 "TempEditor":[null,0],
-    //                 "ActiveEditor":src
-    //             })
-    //             return
-    //         }
-
-    //     this.setState({"TempEditor":[src,Date.now()/1000]})
-        
-    // }
-
-    // closeEditor(src){
-    //     let Index = this.state.OpenEditors.indexOf(src)
-
-    //     let Editors = [...this.state.OpenEditors].filter(function(e) { return e !== src })
-
-    //     this.setState({
-    //         "OpenEditors":Editors,
-    //         "ActiveEditor":(src === this.state.ActiveEditor) ? Editors[Math.max(0,Index-1)] : this.state.ActiveEditor,
-    //     })
-    // }
-
-    // setActiveEditor(src){
-    //     if (!this.state.OpenEditors.includes(src)) return;
-    //     this.setState({"ActiveEditor":src})
-    // }
-
-    // reorderTabs(tab1, tab2){
-    //     let tmp = [...this.state.OpenEditors]
-    //     let [i, j] = [tmp.indexOf(tab1), tmp.indexOf(tab2)]
-
-    //     console.log(tab1, tab2)
-    //     if (tab2 === "__PADDING__"){
-    //         tmp.splice(i,1)
-    //         tmp.pop()
-    //         tmp.push(tab1)
-    //         tmp.push(tab2)
-    //     } else {
-    //         tmp[i] = tab2
-    //         tmp[j] = tab1
-    //     }
-
-        
-    //     this.setState({"OpenEditors":tmp})
-    // }
-
     render(){
-        // console.log(this.props.ActiveEditor)
         return (
             <div className="column">
                 <EditorGroup>
@@ -94,7 +36,6 @@ class Content extends React.Component {
                         )
                     })}
                 </EditorGroup>
-                {/* <Breadcrumbs/> */}
                 <FileViewer src={this.props.activeEditor} files={this.props.files}/>
             </div>
         )
