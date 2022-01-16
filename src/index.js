@@ -46,14 +46,14 @@ class Window extends React.Component {
 
     closeEditor(src){
         let Editors = [...this.state.OpenEditors].filter(function(e) { return e !== src })
-
         this.setState({"OpenEditors":Editors})
 
-        if (src === this.state.ActiveEditor)
-            this.setState({"ActiveEditor": Editors[Math.max(0,this.state.OpenEditors.indexOf(src))]})
+        if (this.state.ActiveEditor === src)
+            this.setState({"ActiveEditor": Editors[Math.max(0,this.state.OpenEditors.indexOf(src)-1)]})
         
-        if (src === this.state.TempEditor[0])
-            this.setState({"TempEditor": [null, 0]}) 
+        if (this.state.ActiveEditor === this.state.TempEditor[0])
+            this.setState({"TempEditor": [null, 0]})
+        
     }
 
     setActiveEditor(src){
