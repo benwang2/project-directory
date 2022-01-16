@@ -27,17 +27,18 @@ class Directory extends React.Component {
 
         return (
             <div className={classList.join(" ")} id={"dir/"+this.props.name}>
-                <div class="directory tab" onClick={this.handleClick}>
+                <div className="directory tab" onClick={this.handleClick}>
                     <img className="collapseButton" src={process.env.PUBLIC_URL+"/img/svg/" + (this.state.Collapsed ? "collapsed.svg" : "expanded.svg")} alt=""/>
                     {this.props.name}
                 </div>
                 {(!this.state.Collapsed && this.props.directory) &&
                     Object.keys(this.props.directory).map((name)=>{
                         if (typeof(this.props.directory[name])==="string"){
-                            let icon = name == "README.md" ? "/img/svg/readme.svg" : "/img/svg/markdown.svg"
-                            return <File name={name} icon={icon} level={this.props.level} setActiveEditor={this.props.setActiveEditor}/>
+                            let icon = name === "README.md" ? "/img/svg/readme.svg" : "/img/svg/markdown.svg"
+                            return <File key={"f/"+name} name={name} icon={icon} level={this.props.level} setActiveEditor={this.props.setActiveEditor}/>
                         } else {
-                            return <Directory name={name} directory={this.props.directory[name]} level={parseInt(this.props.level)+1} setActiveEditor={this.props.setActiveEditor}/>
+                            if (name !== "__PADDING__")
+                                return <Directory key={"d/"+name}  name={name} directory={this.props.directory[name]} level={parseInt(this.props.level)+1} setActiveEditor={this.props.setActiveEditor}/>
                         }
                     })
                 }
@@ -84,9 +85,11 @@ class FileSystem extends React.Component {
     }
 
     render(){
+        let openEditors = {}
+        this.props.openEditors.forEach(e => {openEditors[e] = this.props.files[e]})
         return(
             <div>
-                <Directory name="OPEN EDITORS" isRoot="true" path="open_editors" directory={this.props.openEditors} level="0" setActiveEditor={this.props.setActiveEditor}/>
+                <Directory name="OPEN EDITORS" isRoot="true" path="open_editors" level="0" setActiveEditor={this.props.setActiveEditor} directory={openEditors}/>
                 <Directory name="PROJECT-DIRECTORY" isRoot="true" directory={this.props.files} level="0" setActiveEditor={this.props.setActiveEditor}/>
             </div>
         )

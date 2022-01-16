@@ -111,6 +111,7 @@ class Window extends React.Component {
                 <NavMenu files={Files}
                     setActiveEditor={this.setActiveEditor}
                     activeEditor={this.state.ActiveEditor}
+                    openEditors={this.state.OpenEditors}
                 />
                 <Content files={Files}
                             setActiveEditor={this.setActiveEditor}
