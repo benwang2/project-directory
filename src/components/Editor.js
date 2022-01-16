@@ -21,9 +21,10 @@ class Content extends React.Component {
                     {this.props.openEditors.map((name,i)=>{
                         let status = this.props.activeEditor === name ? "active" : "inactive"
                         let isTemp = this.props.tempEditor === name
+                        let icon = name === "README.md" ? "/img/svg/readme.svg" : "/img/svg/markdown.svg"
                         return (
                             <EditorTab
-                                icon="/img/svg/javascript.svg"
+                                icon={icon}
                                 setActiveEditor={this.setActiveEditor}
                                 closeEditor={this.closeEditor}
                                 reorderTabs={this.reorderTabs}
