@@ -57,11 +57,20 @@ class Window extends React.Component {
     }
 
     setActiveEditor(src){
-        if (this.state.TempEditor[0] === src && (Date.now()/1000)-this.state.TempEditor[1] < 1){
-            return this.setState({
-                "TempEditor":[null,0],
-                "ActiveEditor":src,
-            })
+        if (this.state.TempEditor[0] === src){
+            if ((Date.now()/1000)-this.state.TempEditor[1] < 1)
+                this.setState({
+                    "TempEditor":[null,0],
+                    "ActiveEditor":src,
+                })
+
+
+            else 
+                this.setState({
+                    "TempEditor":[this.state.TempEditor[0],Date.now()/1000]
+                })
+            
+            return
         }
 
         if (this.state.OpenEditors.includes(src))
