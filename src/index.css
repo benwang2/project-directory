@@ -184,21 +184,19 @@ body {
 
 .directory.root .tab::before {
     content:"";
-    width:4px;
+    min-width:4px; max-width: 4px;
     height:100%;
 }
 
 .directory.l1 .tab::before {
     content:"";
-    width:24px;
+    min-width:24px; max-width: 24px;
     height:100%;
 }
 
 .directory.l2 .tab::before {
     content:"";
     width:48px;
-    height:100%;
-    width:72px;
     height:100%;
 }
 
@@ -231,7 +229,7 @@ cursor:pointer;
 
 .file.l0::before {
     content:"";
-    width:24px;
+    min-width:24px;
 }
 
 .file.l1::before {
