@@ -7,9 +7,11 @@ import NavMenu from './components/NavigationMenu';
 
 const Files = {
     "README.md":"https://raw.githubusercontent.com/benwang2/project-directory/master/README.md",
-    "lotus.md":"https://raw.githubusercontent.com/benwang2/Lotus/master/README.md",
-    "steganography.md":"https://raw.githubusercontent.com/benwang2/steganography/master/README.md",
-    "ProblemSetGenerator.md":"https://raw.githubusercontent.com/benwang2/ProblemSetGenerator/main/README.md"
+    "Lotus.md":"https://raw.githubusercontent.com/benwang2/Lotus/master/README.md",
+    "Steganography.md":"https://raw.githubusercontent.com/benwang2/steganography/master/README.md",
+    "ProblemSetGenerator.md":"https://raw.githubusercontent.com/benwang2/ProblemSetGenerator/main/README.md",
+    "CS211.md":"https://raw.githubusercontent.com/benwang2/CS211/main/README.md",
+    "Betterburn.md":"https://raw.githubusercontent.com/benwang2/betterburn/master/README.md"
 }
 
 class Window extends React.Component {
@@ -110,7 +112,7 @@ class Window extends React.Component {
             tmp[j] = tab1
         }
 
-        
+
         this.setState({"OpenEditors":tmp})
     }
 
