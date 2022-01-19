@@ -27,7 +27,12 @@ class CloseButton extends React.Component {
             inactive:{visibility:"hidden",zindex:1},
         }[this.props.status]
         return (
-            <img src={process.env.PUBLIC_URL+"/img/svg/close.svg"} alt="" className="closeButton" style={buttonStyle} onClick={this.handleClick} onDragStart={this.handleDragStart}/>
+            <img src={process.env.PUBLIC_URL+"/img/svg/close.svg"}
+                alt=""
+                className="closeButton"
+                style={buttonStyle}
+                onClick={this.handleClick}
+                onDragStart={this.handleDragStart}/>
         )
     }
 }

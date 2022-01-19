@@ -121,6 +121,7 @@ class Window extends React.Component {
                     setActiveEditor={this.setActiveEditor}
                     activeEditor={this.state.ActiveEditor}
                     openEditors={this.state.OpenEditors}
+                    closeEditor={this.closeEditor}
                 />
                 <Content files={Files}
                             setActiveEditor={this.setActiveEditor}
