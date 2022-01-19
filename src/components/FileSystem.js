@@ -66,14 +66,30 @@ class File extends React.Component {
 
         this.state = {
             Open: 0,    // 1: Selected from navmenu, 2: Selected from editor
+            Hovering: false,
         }
 
         this.handleClick = this.handleClick.bind(this)
         this.closeEditor = this.closeEditor.bind(this)
+
+        this.handleMouseEnter = this.handleMouseEnter.bind(this)
+        this.handleMouseLeave = this.handleMouseLeave.bind(this)
     }
 
     handleClick(e){
         this.props.setActiveEditor(this.props.name)
+    }
+
+    handleMouseEnter(e){
+        if (this.props.path==="open_editors"){
+            this.setState({"Hovering":true})
+        }
+    }
+
+    handleMouseLeave(e){
+        if (this.props.path==="open_editors"){
+            this.setState({"Hovering":false})
+        }
     }
 
     closeEditor(e){
@@ -82,8 +98,13 @@ class File extends React.Component {
 
     render(){
         const classList = ["file","l"+(this.props.level||0),[null,"navSelected","editorSelected"][this.state.Open]]
-        return (<div className={classList.join(" ")} id={"file/"+this.props.name} onClick={this.handleClick}>
-            {this.props.path=="open_editors"&&<CloseButton onClick={this.closeEditor} strokeWidth="1.5"/>}
+
+        return (<div className={classList.join(" ")} id={"file/"+this.props.name} onClick={this.handleClick}
+                onMouseEnter={this.handleMouseEnter} onMouseLeave={this.handleMouseLeave}
+            >
+            {this.props.path=="open_editors"
+                &&
+                <CloseButton onClick={this.closeEditor} strokeWidth="1.5" status={!this.state.Hovering ? "inactive" : "active"}/>}
             <img src={process.env.PUBLIC_URL+this.props.icon}/>
             {this.props.name}
         </div>)
