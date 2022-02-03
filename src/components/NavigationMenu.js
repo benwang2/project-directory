@@ -20,18 +20,29 @@ class SideBar extends React.Component {
             Folders: [],
             Files: [],
         }
+
+        this.toggleCollapse = this.toggleCollapse.bind(this)
+    }
+
+    toggleCollapse(e){
+        this.setState({"Collapsed":!this.state.Collapsed})
     }
 
     render(){
         return(
-            <div className={"sideBar column"+(this.state.Collapsed?" collapsed":"")}  style={{width:"20vw"}}>
-                <div style={{padding:"0.75rem 2rem 0.75rem 2rem"}}>
-                    <span style={{fontWeight: "400"}}>
-                        EXPLORER
-                    </span>
-                    {/* <img src={process.env.PUBLIC_URL+"/img/svg/ellipsis.svg"} style={{float:"right",top:"50%",position:"relative"}} alt="expand"/> */}
+            <div style={{position:"relative",transition:"margin-left 0.2s",marginLeft:this.state.Collapsed?" -277px":""}}>
+                <div style={{position:"absolute", left:"100%", background:"#252526",padding:".5rem"}} className="button" onClick={this.toggleCollapse}>
+                    {this.state.Collapsed ? ">" : "<"}
                 </div>
-                {this.props.children}
+                <div className={"sideBar column"}  style={{width:"20vw"}}>
+                    <div style={{padding:"0.75rem 2rem 0.75rem 2rem"}}>
+                        <span style={{fontWeight: "400"}}>
+                            EXPLORER
+                        </span>
+                        {/* <img src={process.env.PUBLIC_URL+"/img/svg/ellipsis.svg"} style={{float:"right",top:"50%",position:"relative"}} alt="expand"/> */}
+                    </div>
+                    {this.props.children}
+                </div>
             </div>
         )
     }
@@ -41,7 +52,7 @@ class NavMenu extends React.Component {
     render(){
         return(
             <div style={{display:"flex"}}>
-                <ActivityBar/>
+                {/* <ActivityBar/> */}
                 <SideBar>
                     <FileSystem files={this.props.files}
                         setActiveEditor={this.props.setActiveEditor}

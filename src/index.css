@@ -29,7 +29,7 @@ body {
 .sideBar {
     background-color:#252526;
     max-width:277px;
-    min-width:180px;
+    min-width:277px;
     height:100vh;
     float:left;
     font-size:.8rem;
@@ -97,6 +97,10 @@ body {
 
 .padded-left-2x {
     padding-left:2rem;
+}
+
+.button:hover {
+    cursor: pointer;
 }
 
 .closeButton {
