@@ -30,20 +30,15 @@ class Window extends React.Component {
         this.reorderTabs = this.reorderTabs.bind(this)
     }
 
-    componentDidMount(){
-        function load(dir){
-            let keys = Object.keys(dir);
-            for (let i = 0; i < keys.length; i++){
-                let key = keys[i]
-                if (typeof(key) === 'object'){load(dir[key])}
-                else {
-                    fetch(dir[key]).then(response => response.text()).then((text) => {
-                        dir[key] = text
-                    });
-                }
-            }
+    async componentDidMount(){
+        for (const key in Files){
+            var resp = await fetch(Files[key])
+            var text = await resp.text()
+            Files[key] = text
         }
-        load(Files);
+
+        for (let i = 0; i < 2; i++)
+            this.setActiveEditor("README.md")
     }
 
     closeEditor(src){

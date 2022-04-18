@@ -1,15 +1,18 @@
 # Project Directory
-VSCode-look-alike portfolio website for showcasing my personal projects. Built with React, JavaScript, and CSS.
+A creative take on a portfolio website, built with React, JavaScript, and CSS.
+
+This website is inspired by the popular code editor, [Visual Studio Code](https://code.visualstudio.com/).
 
 ## About The Project
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It renders README files from GitHub repositories and displays them in a VS-Code themed web application.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). It renders README files from various GitHub repositories and displays them in a VS-Code themed web application.
 
 ## Project Status
-This project is currently in development.
-- Directories could be implemented and a splash plage must be created
-- Sidebar should be removed or made functional
-- READMEs for other repositories must be created and/or updated
-- Must make anchor tags work in rendered Markdown
+This project is not currently in development.
+- [x] Sidebar should be removed or made functional
+- [x] READMEs for other repositories must be created and/or updated
+- [ ] Directories could be implemented and a splash plage must be created
+- [ ] Must make anchor tags work in rendered Markdown
+- [ ] Create a local markdown file containing information "about me" to serve as the landing page
 
 ## Additional Dependencies
 The following dependencies are used to render markdown files.
