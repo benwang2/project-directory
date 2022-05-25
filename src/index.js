@@ -12,7 +12,7 @@ const Files = {
     "ProblemSetGenerator.md":"https://raw.githubusercontent.com/benwang2/ProblemSetGenerator/main/README.md",
     "CS211.md":"https://raw.githubusercontent.com/benwang2/CS211/main/README.md",
     "Betterburn.md":"https://raw.githubusercontent.com/benwang2/betterburn/master/README.md",
-    "ReplayEditor.md","https://raw.githubusercontent.com/benwang2/RoA-Replay-Editor/master/README.md"
+    "ReplayEditor.md":"https://raw.githubusercontent.com/benwang2/RoA-Replay-Editor/master/README.md"
 }
 
 class Window extends React.Component {
