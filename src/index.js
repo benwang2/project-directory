@@ -13,7 +13,8 @@ const Files = {
     "CS211.md":"https://raw.githubusercontent.com/benwang2/CS211/main/README.md",
     "Betterburn.md":"https://raw.githubusercontent.com/benwang2/betterburn/master/README.md",
     "ReplayEditor.md":"https://raw.githubusercontent.com/benwang2/RoA-Replay-Editor/master/README.md",
-    "FileTransferServer.md":"https://raw.githubusercontent.com/benwang2/file-transfer-server/main/README.md"
+    "FileTransferServer.md":"https://raw.githubusercontent.com/benwang2/file-transfer-server/main/README.md",
+    "RUDiningMenuAPI.md":"https://raw.githubusercontent.com/benwang2/RU-Dining-API/main/README.md"
 }
 
 class Window extends React.Component {
